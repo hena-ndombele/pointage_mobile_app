@@ -26,6 +26,7 @@ class _ProfilePageState extends State<ProfilePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: ColorPages.COLOR_PRINCIPAL,
+        automaticallyImplyLeading: false,
         title: Text(
           'Profil',
           style:
@@ -66,22 +67,12 @@ class _ProfilePageState extends State<ProfilePage> {
           SizedBox(
             height: 50,
           ),
-          /* Container(
-            child: InkWell(
-              onTap: () async {},
-              child: imageSelectione == null
-                  ? CircleAvatar(
-                radius: 80.0,
-                backgroundImage: AssetImage(
-                  'images/image2.png',
-                ),
-              )
-                  : CircleAvatar(
-                radius: 80.0,
-                backgroundImage: FileImage(File(imageSelectione!.path)),
-              ),
+          Container(
+            child: Image.asset(
+              "images/image1.png",
+              width: 90,
             ),
-          ),*/
+          ),
           SizedBox(
             height: 20,
           ),
@@ -144,10 +135,6 @@ class _ProfilePageState extends State<ProfilePage> {
                         }),
                   ),
                   Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(50),
-                      //color: Utils.COLOR_BLEU_CIEL,
-                    ),
                     child: ListTile(
                       title: Text(
                         'Mes Informations',
@@ -188,52 +175,9 @@ class _ProfilePageState extends State<ProfilePage> {
                           color: ColorPages.COLOR_NOIR,
                           size: 14,
                         ),
-                        onTap: () {}),
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(50),
-                      //color: Utils.COLOR_BLEU_CIEL,
-                    ),
-                    child: ListTile(
-                      title: Text(
-                        'Feedback',
-                        style: TextStyle(fontSize: 14, fontFamily: 'hena'),
-                      ),
-                      leading: Icon(
-                        Icons.bookmark,
-                        color: ColorPages.COLOR_NOIR,
-                        size: 24,
-                      ),
-                      trailing: Icon(
-                        Icons.arrow_forward_ios,
-                        color: ColorPages.COLOR_NOIR,
-                        size: 14,
-                      ),
-                      onTap: () {},
-                    ),
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(50),
-                      //color: Utils.COLOR_BLEU_CIEL,
-                    ),
-                    child: ListTile(
-                        title: Text(
-                          'Partager',
-                          style: TextStyle(fontSize: 14, fontFamily: 'hena'),
-                        ),
-                        leading: Icon(
-                          Icons.share,
-                          color: ColorPages.COLOR_NOIR,
-                          size: 24,
-                        ),
-                        trailing: Icon(
-                          Icons.arrow_forward_ios,
-                          color: ColorPages.COLOR_NOIR,
-                          size: 14,
-                        ),
-                        onTap: () {}),
+                        onTap: () {
+                          Navigator.pushNamed(context, Routes.Apropos);
+                        }),
                   ),
                   Container(
                     decoration: BoxDecoration(

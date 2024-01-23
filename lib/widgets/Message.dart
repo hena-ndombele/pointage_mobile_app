@@ -9,6 +9,7 @@ void showMsg(BuildContext context, bool success, String message) {
           Container(
             padding: EdgeInsets.all(16),
             height: 90,
+
             decoration: BoxDecoration(
               color: success ? Colors.green : Colors.red,
               borderRadius: BorderRadius.all(Radius.circular(20)),

@@ -2,6 +2,10 @@ import 'package:app_pointer/widgets/Chargement.dart';
 import 'package:flutter/material.dart';
 import 'package:app_pointer/utils/ColorPage.dart';
 import 'package:app_pointer/widgets/ChampSaisie.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:provider/provider.dart';
+import 'package:app_pointer/authentification/AuthentificationController.dart';
+import '../widgets/MessageSnack.dart';
 
 class ChangerPasswordPage extends StatefulWidget {
   const ChangerPasswordPage({super.key});
@@ -15,11 +19,12 @@ class _ChangerPasswordPageState extends State<ChangerPasswordPage> {
   TextEditingController _ancien = TextEditingController();
   TextEditingController _nouveau = TextEditingController();
   TextEditingController _confirmer = TextEditingController();
-
+  GetStorage stockage = GetStorage();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: Text(
           "Changer mon mot de passe",
           style: TextStyle(
@@ -37,7 +42,7 @@ class _ChangerPasswordPageState extends State<ChangerPasswordPage> {
 
   Widget _body(BuildContext context) {
     return Column(
-      children: [_champs(), _bouton()],
+      children: [_champs(), _button()],
     );
   }
 
@@ -114,29 +119,58 @@ class _ChangerPasswordPageState extends State<ChangerPasswordPage> {
     );
   }
 
-  Widget _bouton() {
+  Widget _button() {
     return Expanded(
       child: Container(
-        margin: EdgeInsets.symmetric(horizontal: 70),
+        margin: EdgeInsets.all(10),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Spacer(),
             Row(
               children: [
-                Expanded(
-                  child: Text('version 1.0.0',
+                Container(
+                  width: 150,
+                  height: 50,
+                  margin: EdgeInsets.all(10),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: Text("Annuler",
+                        style: TextStyle(
+                            fontSize: 17,
+                            fontWeight: FontWeight.bold,
+                            color: ColorPages.COLOR_PRINCIPAL)),
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: ColorPages.COLOR_TRANSPARENT,
+                        elevation: 0,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15),
+                        )),
+                  ),
+                ),
+                Container(
+                  width: 150,
+                  height: 50,
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    child: Text(
+                      "Changer",
                       style: TextStyle(
-                          color: ColorPages.COLOR_BLANCHE,
+                          fontSize: 17,
                           fontWeight: FontWeight.bold,
-                          fontSize: 16)),
-                )
+                          color: ColorPages.COLOR_BLANCHE),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: ColorPages.COLOR_NOIR,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15),
+                        )),
+                  ),
+                ),
               ],
             ),
-            SizedBox(
-              height: 20,
-            )
           ],
         ),
       ),

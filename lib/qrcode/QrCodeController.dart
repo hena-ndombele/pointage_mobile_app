@@ -7,9 +7,8 @@ import 'package:app_pointer/utils/StockagesKeys.dart';
 import '../utils/Endpoints.dart';
 import '../utils/Requettes.dart';
 
-class QrCodeController with ChangeNotifier{
-
-  List <QrCodeModel> presenceList = [];
+class QrCodeController with ChangeNotifier {
+  List<QrCodeModel> presenceList = [];
   bool loading = false;
   GetStorage? stockage;
   int? _presence_id;
@@ -22,43 +21,45 @@ class QrCodeController with ChangeNotifier{
     notifyListeners();
 
     var tkn = stockage?.read(StockageKeys.tokenKey);
-    var reponse = await getData(url,token:tkn);
+    var reponse = await getData(url, token: tkn);
     print("Résultat de la réccupération ${reponse}");
 
     if (reponse != null) {
-      List<QrCodeModel> presence = reponse.map<QrCodeModel>((e) => QrCodeModel.fromJson(e)).toList();
+      List<QrCodeModel> presence =
+          reponse.map<QrCodeModel>((e) => QrCodeModel.fromJson(e)).toList();
       presenceList = presence;
       stockage?.write(StockageKeys.present, reponse);
       notifyListeners();
     } else {
       var presentLocal = stockage?.read(StockageKeys.present);
-      var temp = presentLocal.map<QrCodeModel>((e) => QrCodeModel.fromJson(e)).toList;
-      presenceList= temp;
+      var temp =
+          presentLocal.map<QrCodeModel>((e) => QrCodeModel.fromJson(e)).toList;
+      presenceList = temp;
       print("data satockee :${temp}");
     }
     loading = false;
     notifyListeners();
   }
 
-  Future<HttpResponse> setPresenceApi(String api_url,Map data) async{
-    var _token=stockage?.read(StockageKeys.tokenKey);
-    var reponse=await postData(api_url,data, token: _token);
+  Future<HttpResponse> setPresenceApi(String api_url, Map data) async {
+    var _token = stockage?.read(StockageKeys.tokenKey);
+    var reponse = await postData(api_url, data, token: _token);
 
-    if(reponse.status){
-      _presence_id= reponse.data!['id'];
-      stockage?.write(StockageKeys.presenceKey,_presence_id);
+    if (reponse.status) {
+      _presence_id = reponse.data!['id'];
+      stockage?.write(StockageKeys.presenceKey, _presence_id);
       notifyListeners();
     }
     return reponse;
   }
 
-  Future<HttpResponse> setDepartApi(String api_url,String bssid) async{
-    int presence_id=_presence_id?? stockage?.read(StockageKeys.presenceKey);
-    Map data={"id": presence_id, "bssid": bssid };
-    var _token=stockage?.read(StockageKeys.tokenKey);
-    var reponse=await patchData(api_url,data,token: _token);
+  Future<HttpResponse> setDepartApi(String api_url, String bssid) async {
+    int presence_id = _presence_id ?? stockage?.read(StockageKeys.presenceKey);
+    Map data = {"id": presence_id, "bssid": bssid};
+    var _token = stockage?.read(StockageKeys.tokenKey);
+    var reponse = await patchData(api_url, data, token: _token);
 
-    if(reponse.status){
+    if (reponse.status) {
       stockage?.remove(StockageKeys.presenceKey);
       notifyListeners();
     }
@@ -66,13 +67,7 @@ class QrCodeController with ChangeNotifier{
   }
 }
 
-void main(){
-  var test=QrCodeController();
+void main() {
+  var test = QrCodeController();
   test.getPresenceApi();
 }
-
-
-
-
-
-

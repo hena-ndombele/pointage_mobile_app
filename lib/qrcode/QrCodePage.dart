@@ -118,18 +118,17 @@ class _QrCodePageState extends State<QrCodePage> {
         await presenceCtrl.setPresenceApi(resultScan!, {'bssid': bssid});
 
     if (!resultScan.contains('scan') || !resultScan.contains('Arrive')) {
-      showMsg(context, false, "QR code invalide");
+      showMsg(context, false, "QR Code invalide");
       controller.dispose();
     } else {
       switch (result.data!['message']) {
         case "Presence enregistre":
-          showMsg(
-              context, true, "Votre présence a été enregistrée avec succès");
+          showMsg(context, true, "Vous avez marquer votre entrée");
           controller.dispose();
           Navigator.pop(context);
           break;
         case "Presence deja enregistre":
-          showMsg(context, false, "Votre Présence est deja enregistrée");
+          showMsg(context, false, "Votre avez déjà marquer votre présence");
           controller.dispose();
           break;
         case "Reseau non autorise":
@@ -148,16 +147,18 @@ class _QrCodePageState extends State<QrCodePage> {
     var result = await DepartCtrl.setDepartApi(resultScan!, bssid);
 
     if (!resultScan.contains('scan') || !resultScan.contains('Depart')) {
-      showMsg(context, false, "QR code invalide");
+      showMsg(context, false, "QR Code invalide");
       controller.dispose();
     } else {
       switch (result.data!['message']) {
         case "Depart enregistre":
-          showMsg(context, true, "Votre sorti a été enregistrée avec succès");
+          showMsg(context, true, "Vous avez marquer votre sortie");
           controller.dispose();
+
+          Navigator.pop(context);
           break;
         case "Depart deja enregistre":
-          showMsg(context, false, "Votre départ est deja enregistrée");
+          showMsg(context, false, "Vous avez déjà marquer votre sortie");
           controller.dispose();
           break;
         case "Reseau non autorise":

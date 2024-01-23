@@ -1,11 +1,11 @@
 import 'package:app_pointer/authentification/AuthentificationController.dart';
-import 'package:app_pointer/demarrage/HomePage.dart';
 import 'package:app_pointer/widgets/Chargement.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:app_pointer/widgets/ChampSaisie.dart';
 import 'package:app_pointer/utils/ColorPage.dart';
 import 'package:app_pointer/utils/Routes.dart';
+import 'package:app_pointer/widgets/MessageSnack.dart';
 
 import '../widgets/Message.dart';
 
@@ -43,11 +43,11 @@ class _AuthentificationPageState extends State<AuthentificationPage> {
     setState(() {});
     if (res.status) {
       setState(() {});
-      Navigator.pushReplacementNamed(context, Routes.HomePage);
+      Navigator.pushReplacementNamed(context, Routes.BottomNavBar);
     } else {
       passwordLogin.clear();
       var msg = res.isException == true ? res.errorMsg : (res.data?['message']);
-      showMsg(context, false, msg);
+      Message.afficherOverlay(context, msg, 'images/image1.png');
     }
     return;
   }
@@ -61,12 +61,12 @@ class _AuthentificationPageState extends State<AuthentificationPage> {
       ),
     );
   }
-
   Widget _body(BuildContext context) {
     return Form(
       key: formKey,
       child: Stack(
         children: [
+          //  _logo(),
           _formulaire_widget(),
           _button_widget(),
 
@@ -75,7 +75,6 @@ class _AuthentificationPageState extends State<AuthentificationPage> {
       ),
     );
   }
-
   Widget _formulaire_widget() {
     return Positioned(
         top: 150,
@@ -83,28 +82,24 @@ class _AuthentificationPageState extends State<AuthentificationPage> {
           margin: EdgeInsets.all(25),
           child: Container(
             padding: EdgeInsets.all(20),
-            height: 320,
+            height: 400,
             width: MediaQuery.of(context).size.width - 80,
             margin: EdgeInsets.symmetric(horizontal: 20),
             decoration: BoxDecoration(
                 color: ColorPages.COLOR_BLANCHE,
-                borderRadius: BorderRadius.circular(15),
+                borderRadius: BorderRadius.circular(20),
                 boxShadow: [
                   BoxShadow(
-                      color: ColorPages.COLOR_NOIR.withOpacity(0.3),
-                      blurRadius: 15,
+                      color: ColorPages.COLOR_NOIR.withOpacity(0.5),
+                      blurRadius: 18,
                       spreadRadius: 5)
                 ]),
             child: Column(
               children: [
-                Text(
-                  "Se connecter",
-                  style: TextStyle(
-                      color: ColorPages.COLOR_NOIR,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
-                      fontFamily: "Schyler"),
-                ),
+                Container(
+                    width: 50,
+                    height: 50,
+                    child: Image(image: AssetImage("images/image1.png"))),
                 SizedBox(
                   height: 20,
                 ),
@@ -182,10 +177,9 @@ class _AuthentificationPageState extends State<AuthentificationPage> {
           ),
         ));
   }
-
   Widget _button_widget() {
     return Positioned(
-      top: 405,
+      top: 465,
       right: 0,
       left: 0,
       child: Center(
