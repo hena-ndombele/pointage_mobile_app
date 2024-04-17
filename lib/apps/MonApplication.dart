@@ -25,7 +25,6 @@ class MonApplication extends StatelessWidget {
         ChangeNotifierProvider(create: (_)=>InformationCtrl(stockage: _stockage)),
           ],
       child: MaterialApp(
-
         theme: ThemeData(appBarTheme: AppBarTheme(iconTheme: IconThemeData(color:Colors.white))),
         debugShowCheckedModeBanner: false,
         onGenerateRoute: RoutesManager.route,

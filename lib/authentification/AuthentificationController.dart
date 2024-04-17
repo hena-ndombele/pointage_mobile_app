@@ -40,7 +40,7 @@ class AuthentificationController with ChangeNotifier {
   Future<HttpResponse> login(Map data) async {
     var url = "${Endpoints.authentificationEndpoint}";
     HttpResponse response = await postData(url, data);
-    if (response.status) {
+    if (response.status ) {
       var temp_user = response.data?["data"]["user"] ?? {};
       user = AuthentificationModel.fromJson(temp_user);
       stockage?.write(

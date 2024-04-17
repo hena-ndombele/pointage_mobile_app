@@ -1,7 +1,7 @@
 class Routes {
   static const String Authentification = "/Authentification";
   static const String QrCodeScannerRoute = "/scanner";
-  static const String ModifierPassword = "/ModifierPassword";
+  static const String PasswordOubie = "/PasswordOubie";
   static const String SplaShreen = "/SplaShreen";
   static const String Apropos = "/AproposPage";
 

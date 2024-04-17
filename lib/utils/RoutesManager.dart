@@ -3,6 +3,7 @@ import 'package:app_pointer/changerPassword/ChangerPasswordPage.dart';
 import 'package:app_pointer/demarrage/BottomNavBar.dart';
 import 'package:app_pointer/demarrage/SplashScreen.dart';
 import 'package:app_pointer/information/InformationPage.dart';
+import 'package:app_pointer/motdepasseoublie/MotDePasseOubliePage.dart';
 import 'package:app_pointer/profile/ProfilePage.dart';
 import 'package:app_pointer/qrcode/QrCodePage.dart';
 import 'package:flutter/material.dart';
@@ -26,6 +27,8 @@ class RoutesManager {
         return MaterialPageRoute(builder: (_)=>ChangerPasswordPage());
       case Routes.InformationPage:
         return MaterialPageRoute(builder: (_)=>InformationPage());
+      case Routes.PasswordOubie:
+        return MaterialPageRoute(builder: (_)=>PasswordOublie());
       case Routes.HistoriquePage:
         return MaterialPageRoute(builder: (_)=>HistoriquePage());
         case Routes.BottomNavBar:

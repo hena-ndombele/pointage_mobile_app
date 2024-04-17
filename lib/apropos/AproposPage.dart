@@ -70,6 +70,28 @@ class _AproposPageState extends State<AproposPage> {
                           fontSize: 21,
                           fontFamily: 'Schyler')),
                 ),
+                Expanded(
+
+                  child: Container(
+                    margin: EdgeInsets.symmetric(horizontal: 50),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Spacer(),
+                        Row(
+                          children: [
+
+                            Expanded(
+                              child:Text('Développé par Hena Ndombele',style: TextStyle(color:ColorPages.COLOR_GRIS,fontSize: 13)),
+                            ) ],
+                        ),
+                        SizedBox(
+                          height: 20,
+                        )
+                      ],
+                    ),
+                  ),
+                ),
               ],
             ),
           );
@@ -101,12 +123,6 @@ class _AproposPageState extends State<AproposPage> {
                     title: Text('Whastapp'),
                     onTap: () =>
                         launchUrl(Uri.parse('https://wa.me/+243830376004')),
-                  ),
-                  ListTile(
-                    leading: Image.asset('images/port.png', width: 30),
-                    title: Text('Portfolio'),
-                    onTap: () => launchUrl(Uri.parse(
-                        'https://hena-ndombele.github.io/Hena-Ndombele/')),
                   ),
                   ListTile(
                     leading: Image.asset('images/link.png', width: 30,),

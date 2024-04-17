@@ -56,63 +56,14 @@ class _InformationPageState extends State<InformationPage> {
               SizedBox(
                 height: 30,
               ),
+
               Container(
                 child: Container(
                   margin: EdgeInsets.all(20),
                   child: Row(
                     children: [
                       Text(
-                        "Nom :",
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          fontFamily: 'Schyler',
-                        ),
-                      ),
-                      Text(
-                        ' ${infoCtrl.infosAgent?.nom ?? ""}',
-                        style: TextStyle(fontSize: 15),
-                      )
-                    ],
-                  ),
-                ),
-              ),
-              Divider(
-                height: 15,
-                color: ColorPages.COLOR_GRIS,
-              ),
-              Container(
-                child: Container(
-                  margin: EdgeInsets.all(20),
-                  child: Row(
-                    children: [
-                      Text(
-                        "Postnom :",
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          fontFamily: 'Schyler',
-                        ),
-                      ),
-                      Text(
-                        ' ${infoCtrl.infosAgent?.postnom ?? ""}',
-                        style: TextStyle(fontSize: 15),
-                      )
-                    ],
-                  ),
-                ),
-              ),
-              Divider(
-                height: 15,
-                color: ColorPages.COLOR_GRIS,
-              ),
-              Container(
-                child: Container(
-                  margin: EdgeInsets.all(20),
-                  child: Row(
-                    children: [
-                      Text(
-                        "Prénom :",
+                        "Nom Complet :",
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,

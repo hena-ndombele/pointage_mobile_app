@@ -23,7 +23,6 @@ class InformationCtrl with ChangeNotifier {
     print("ddddddddddddddddddddddddddddddd $response");
     if (response != null) {
       infosAgent = InformationModel.fromJson(response);
-
       print("============INFO AGENT $infosAgent");
     }
     loading = false;

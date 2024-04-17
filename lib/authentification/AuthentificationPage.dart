@@ -110,7 +110,7 @@ class _AuthentificationPageState extends State<AuthentificationPage> {
                         return "votre adresse email*";
                       }
                       if (!RegExp(r'\S+@\S+\.\S+').hasMatch(value)) {
-                        return 'Entrez une addresse valide*';
+                        return 'Entrez une adresse mail valide*';
                       }
                       return null;
                     },
@@ -160,14 +160,10 @@ class _AuthentificationPageState extends State<AuthentificationPage> {
                             fontStyle: FontStyle.italic),
                       ),
                       onTap: () {
-                        var msg = "Bientôt disponible*";
-                        //  Message.afficherSnacks(context, msg);
-
-                        /*
                         Navigator.pushNamed(
                           context,
-                          Routes.ModifierPassword,
-                        );*/
+                          Routes.PasswordOubie,
+                        );
                       },
                     ),
                   ],
@@ -207,4 +203,8 @@ class _AuthentificationPageState extends State<AuthentificationPage> {
       ),
     );
   }
+
+
+
+
 }
