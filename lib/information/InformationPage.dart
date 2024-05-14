@@ -47,7 +47,6 @@ class _InformationPageState extends State<InformationPage> {
 
   Widget _body(BuildContext context) {
     var infoCtrl = context.watch<InformationCtrl>();
-
     return SingleChildScrollView(
       child: Column(
         children: [
